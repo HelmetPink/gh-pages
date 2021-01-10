@@ -77,8 +77,8 @@ module.exports = {
          */
         extend(config, ctx) {},
     },
-    // generate: {
-    //     dir: 'docs',
-    //     subFolders: false,
-    // },
+    generate: {
+        dir: 'docs',
+        subFolders: false,
+    },
 };

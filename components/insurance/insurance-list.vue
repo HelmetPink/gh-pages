@@ -240,6 +240,7 @@ export default {
           }
         }
       }
+
       this.isLoading = false;
       this.buyList = buyResult;
       this.sellList = sellResult;
