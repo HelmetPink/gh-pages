@@ -5,9 +5,8 @@
         <span>{{ $t("Content.InsurancePrice") }}</span>
         <p>
           1 {{ currentCoin == "FORTUBE" ? "FOR" : currentCoin }} :
-          <!-- {{ strikePrice }} BNB -->
-          {{ currentCoin == "HELMET" ? "--" : strikePrice }} BNB
-          <!-- {{ unit }} ≈ {{ HelmetPrice }}HELMET -->
+          {{ strikePrice }} BNB
+          <!-- {{ currentCoin == "HELMET" ? "--" : strikePrice }} BNB -->
         </p>
       </div>
       <div>
@@ -16,8 +15,7 @@
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-time"></use>
           </svg>
-          <!-- {{ dueDate }} -->
-          --
+          {{ dueDate }}
         </p>
       </div>
     </section>
@@ -80,7 +78,7 @@ export default {
       addCommom,
       strikePrice: 0.0067,
       // strikePrice: "--",
-      dueDate: 0,
+      dueDate: "",
     };
   },
   computed: {

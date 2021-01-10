@@ -20,9 +20,9 @@
     <div class="text">
       <p v-for="(item, index) in textList" :key="index">
         <span>{{ item.text }}</span>
-        <span :style="`color:${item.color}`"
-          >{{ item.num
-          }}<i v-if="item.unit" style="color: #919aa6">{{ item.unit }}</i>
+        <span :style="`color:${item.color}`">
+          {{ item.num }}
+          <i v-if="item.unit" style="color: #919aa6">{{ item.unit }}</i>
         </span>
       </p>
     </div>
@@ -48,7 +48,6 @@
           <button
             @click="toDeposite"
             :class="stakeLoading ? 'disable b_button' : 'b_button'"
-            style="background: #ccc !important; pointer-events: none"
           >
             <i :class="stakeLoading ? 'loading_pic' : ''"></i
             >{{ $t("Table.ConfirmDeposit") }}
@@ -59,7 +58,7 @@
                 $t("Table.TotalDeposited")
               }}：</span
             >
-            <span> {{ balance.Deposite }} LPT/{{ balance.TotalLPT }} LPT</span>
+            <span> {{ balance.Withdraw }} LPT/{{ balance.TotalLPT }} LPT</span>
           </p>
           <p>
             <span>My Pool Share：</span>
@@ -85,7 +84,6 @@
           <button
             @click="toExit"
             :class="exitLoading ? 'disable b_button' : 'b_button'"
-            style="background: #ccc !important; pointer-events: none"
           >
             <i :class="exitLoading ? 'loading_pic' : ''"></i
             >{{ $t("Table.ConfirmWithdraw") }} &
@@ -100,7 +98,6 @@
           <button
             @click="toClaim"
             :class="claimLoading ? 'disable o_button' : 'o_button'"
-            style="background: #ccc !important; pointer-events: none"
           >
             <i :class="claimLoading ? 'loading_pic' : ''"></i
             >{{ $t("Table.ClaimAllRewards") }}
@@ -210,12 +207,14 @@ export default {
       let TotalLPT = await totalSupply(type);
       // 可领取
       let Helmet = await CangetPAYA(type);
-
+      // 总发行Helmet
+      let totalHelmet = await totalSupply(lpttype);
       this.balance.Deposite = addCommom(Deposite, 4);
       this.balance.Withdraw = addCommom(Withdraw, 4);
       this.balance.Helmet = addCommom(Helmet, 4);
       this.balance.TotalLPT = addCommom(TotalLPT, 4);
-      this.balance.Share = toRounding(Deposite / TotalLPT, 1) * 100;
+      this.balance.Share = toRounding(Withdraw / TotalLPT, 1) * 100;
+      this.textList[0].num = addCommom((totalHelmet / 30) * 7, 4);
       // this.textList[2].num = addCommom(TotalLPT, 4)
       // this.textList[3].num = addCommom(Deposite, 4)
       // this.textList[4].num = addCommom(Helmet, 4)

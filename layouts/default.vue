@@ -90,6 +90,9 @@ export default {
     aboutInfoSell() {
       return this.$store.state.aboutInfoSell;
     },
+    coinList() {
+      return this.$store.state.coinList;
+    },
   },
   watch: {
     longMapAndSellMap: {
@@ -172,6 +175,9 @@ export default {
       } catch (error) {
         console.log("MateMask 扩展插件未安装或未启用##", error);
       }
+    },
+    closeDialog() {
+      this.$emit("close");
     },
     getStatusTitle(type) {
       switch (type) {
@@ -288,7 +294,6 @@ export default {
       // helmet
       for (let i = 0; i < list.length; i++) {
         let px = await uniswap("WBNB", list[i]);
-        console.log(px, list[i]);
         let key = list[i];
         callIndexPirce[key] = px;
       }
@@ -334,7 +339,6 @@ export default {
       arr.push(putIndexPirce);
       this.$store.commit("SET_ALL_INDEX_PRICE", arr);
       this.$bus.$emit("DRAW_ECHART");
-      console.log(arr1, arr);
     },
   },
 };

@@ -8,8 +8,7 @@
       <h3>{{ item.title }}</h3>
       <p>
         {{ $t("Table.SurplusTime") }}：<span>
-          <!-- {{ item.downTime }} -->
-          --
+          {{ item.downTime }}
         </span>
       </p>
       <div>
@@ -28,7 +27,6 @@
                     ? 'loading o_button'
                     : 'o_button'
                 "
-                style="background: #ccc !important; pointer-events: none"
                 @click="toClaim(item, index, 'call')"
               >
                 <i
@@ -54,7 +52,6 @@
                     ? 'loading o_button'
                     : 'o_button'
                 "
-                style="background: #ccc !important; pointer-events: none"
                 @click="toExit(item, index, 'call')"
               >
                 <i
@@ -74,7 +71,6 @@
                     ? 'loading b_button'
                     : 'b_button'
                 "
-                style="background: #ccc !important; pointer-events: none"
                 @click="toDeposite(item, index, 'call')"
               >
                 <i
@@ -107,7 +103,6 @@
                     ? 'loading o_button'
                     : 'o_button'
                 "
-                style="background: #ccc !important; pointer-events: none"
                 @click="toClaim(item, index, 'put')"
               >
                 <i
@@ -133,7 +128,6 @@
                     ? 'loading o_button'
                     : 'o_button'
                 "
-                style="background: #ccc !important; pointer-events: none"
                 @click="toExit(item, index, 'put')"
               >
                 <i
@@ -153,7 +147,6 @@
                     ? 'loading b_button'
                     : 'b_button'
                 "
-                style="background: #ccc !important; pointer-events: none"
                 @click="toDeposite(item, index, 'put')"
               >
                 <i
