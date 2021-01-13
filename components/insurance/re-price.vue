@@ -52,10 +52,10 @@ export default {
         _collateral: _collateral,
         _underlying: _underlying,
       };
-      console.log(data);
       RePrice(data);
 
       this.$bus.$emit("CLOSE_REPRICE");
+     
     },
   },
 };

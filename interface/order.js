@@ -861,12 +861,13 @@ export const RePrice = async (data) => {
     if (!window.CURRENTADDRESS) {
         return;
     }
-    console.log(askID, price);
     order.methods
         .reprice(askID, price)
         .send({ from: window.CURRENTADDRESS })
         .on('transactionHash', (hash) => {
             bus.$emit('CLONE_REPRICE');
+            bus.$emit('CHANGE_MY_TYPE', 1);
+            bus.$emit('CHANGE_TRADE_TYPE', 1);
             //onChangeHash(hash);
         })
         .on('confirmation', (confirmationNumber, receipt) => {

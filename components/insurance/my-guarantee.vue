@@ -125,6 +125,7 @@ import { fixD, addCommom, autoRounding, toRounding } from "~/assets/js/util.js";
 import { toWei, fromWei } from "~/assets/utils/web3-fun.js";
 import { getTokenName } from "~/assets/utils/address-pool.js";
 import { onExercise, getExercise } from "~/interface/order.js";
+import downloadVue from "../security/download.vue";
 export default {
   data() {
     return {
@@ -143,6 +144,7 @@ export default {
   },
   computed: {
     myAboutInfoBuy() {
+      console.log(this.$store.state);
       return this.$store.state.myAboutInfoBuy;
     },
   },
@@ -160,6 +162,7 @@ export default {
     },
     // 格式化数据
     async setSettlementList(list) {
+      console.log(list);
       this.isLoading = true;
       this.showList = [];
       const result = [];
@@ -249,7 +252,6 @@ export default {
     },
     // 行权
     toActive(item) {
-      console.log(item);
       let data = {
         token: getTokenName(item._underlying),
         _underlying_vol: item.volume * item._strikePrice,

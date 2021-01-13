@@ -73,6 +73,7 @@ export default {
     this.$bus.$on("OPEN_REPRICE", (data) => {
       this.repriceflag = true;
       this.option = data;
+      
     });
     this.$bus.$on("CLOSE_REPRICE", () => {
       this.repriceflag = false;
